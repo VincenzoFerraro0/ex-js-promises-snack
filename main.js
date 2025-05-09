@@ -4,7 +4,18 @@
 // 🎯 Bonus: Ottieni l'intero post con l'autore
 // Crea una funzione getPost(id) che recupera l'intero post. Concatena una seconda chiamata che aggiunge una proprietà user che contiene i dati dell'autore, recuperati dalla chiamata https://dummyjson.com/users/{post.userId}.
 
+function getPostTitle(id) {
+    return new Promise((resolve, reject) => {
+        fetch(`https://dummyjson.com/posts/${id}`)
+            .then(response => response.json())
+            .then(post => resolve(post.title))  // solo titolo
+            .catch(reject);
+    });
+}
 
+getPostTitle(1)
+    .then(title => console.log("Titolo:", title))
+    .catch(error => console.error("Errore:", error));
 
 
 
